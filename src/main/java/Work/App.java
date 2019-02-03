@@ -1,10 +1,12 @@
 package Work;
 
-public class App 
+import java.io.File;
+
+public class App
 {
     public static void main( String[] args )
     {
-        CreateFilePowerPoint file=new CreateFilePowerPoint("Test1");
-        CreateSlide slide1=new CreateSlide(file.getFile());
+        CreateFilePowerPoint filePpt=new CreateFilePowerPoint("Test1");
+        CreateSlide slide1=new CreateSlide(filePpt.getFile());
     }
 }

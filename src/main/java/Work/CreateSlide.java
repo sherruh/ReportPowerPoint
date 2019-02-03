@@ -6,6 +6,7 @@ import org.apache.poi.xslf.usermodel.XSLFSlide;
 import java.io.*;
 
 public class CreateSlide {
+    private File file;
     public CreateSlide(File file){
         FileInputStream inputstream = null;
         try {
