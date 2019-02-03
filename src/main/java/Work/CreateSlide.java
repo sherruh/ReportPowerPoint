@@ -14,6 +14,7 @@ public class CreateSlide {
     private File file;
     private FileInputStream inputStream;
     private XMLSlideShow ppt;
+    private CalcRectangleFor2Screenshots calcRectangleFor2Screenshots;
     public CreateSlide(File file){
         this.file=file;
         try {
@@ -22,6 +23,7 @@ public class CreateSlide {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        calcRectangleFor2Screenshots=new CalcRectangleFor2Screenshots();
     }
 
     public void addEmptySlide(){
@@ -38,7 +40,8 @@ public class CreateSlide {
                 picture = IOUtils.toByteArray(new FileInputStream(image));
                 int idx = ppt.addPicture(picture, XSLFPictureData.PICTURE_TYPE_JPEG);
                 XSLFPictureShape pic = slide.createPicture(idx);
-                pic.setAnchor(new Rectangle((365*(i-1)),150,355,300));
+                //pic.setAnchor(new Rectangle((365*(i-1)),120,355,350));
+                calcRectangleFor2Screenshots.getRightRectangle(pic.getAnchor());
             }
         } catch (IOException e) {
             e.printStackTrace();
