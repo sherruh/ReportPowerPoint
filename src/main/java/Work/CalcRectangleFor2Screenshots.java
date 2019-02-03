@@ -17,7 +17,6 @@ public class CalcRectangleFor2Screenshots {
         while(!checkSize(curWidth,curHeight)){
 
         }
-
         return new Rectangle();
     }
 
