@@ -8,6 +8,10 @@ import java.io.*;
 public class CreateSlide {
     private File file;
     public CreateSlide(File file){
+        this.file=file;
+    }
+
+    public void addEmptySlide(){
         FileInputStream inputstream = null;
         try {
             inputstream = new FileInputStream(file);
@@ -21,6 +25,5 @@ public class CreateSlide {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
