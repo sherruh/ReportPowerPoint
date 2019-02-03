@@ -36,7 +36,7 @@ public class CreateSlide {
             XSLFSlide slide = ppt.createSlide();
             for (int i = 1; i < 3; i++) {
                 File image = new File(i + ".jpg");
-                byte[] picture = new byte[0];
+                byte[] picture;
                 picture = IOUtils.toByteArray(new FileInputStream(image));
                 int idx = ppt.addPicture(picture, XSLFPictureData.PICTURE_TYPE_JPEG);
                 XSLFPictureShape pic = slide.createPicture(idx);
