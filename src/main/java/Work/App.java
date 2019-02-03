@@ -9,5 +9,6 @@ public class App
         CreateFilePowerPoint filePpt=new CreateFilePowerPoint("Test1");
         CreateSlide createSlide=new CreateSlide(filePpt.getFile());
         createSlide.addEmptySlide();
+        createSlide.add2ScreenshotsSlide();
     }
 }
