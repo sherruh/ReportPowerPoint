@@ -1,9 +1,13 @@
 package Work;
 
+import org.apache.poi.util.IOUtils;
 import org.apache.poi.xslf.usermodel.XMLSlideShow;
+import org.apache.poi.xslf.usermodel.XSLFPictureData;
+import org.apache.poi.xslf.usermodel.XSLFPictureShape;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.io.*;
 
 public class CreateSlide {
@@ -25,10 +29,21 @@ public class CreateSlide {
         System.out.println("Added empty slides successfully!");
     }
 
-    public void add2ScreenshotsSlide(){
-        ppt.createSlide();
+    public void add2ScreenshotsSlide() {
+        try {
+            XSLFSlide slide = ppt.createSlide();
+            for (int i = 1; i < 3; i++) {
+                File image = new File(i + ".jpg");
+                byte[] picture = new byte[0];
+                picture = IOUtils.toByteArray(new FileInputStream(image));
+                int idx = ppt.addPicture(picture, XSLFPictureData.PICTURE_TYPE_JPEG);
+                XSLFPictureShape pic = slide.createPicture(idx);
+                pic.setAnchor(new Rectangle((365*(i-1)),150,355,300));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         writeToFile("Added slide with 2 screenshots successfully!");
-
     }
 
     public void writeToFile(String message){
