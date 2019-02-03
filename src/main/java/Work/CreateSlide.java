@@ -7,7 +7,6 @@ import org.apache.poi.xslf.usermodel.XSLFPictureShape;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.io.*;
 
 public class CreateSlide {
@@ -49,8 +48,8 @@ public class CreateSlide {
         writeToFile("Added slide with 2 screenshots successfully!");
     }
 
-    public void writeToFile(String message){
-        FileOutputStream out = null;
+    void writeToFile(String message){
+        FileOutputStream out;
         try {
             out = new FileOutputStream(file);
             ppt.write(out);
