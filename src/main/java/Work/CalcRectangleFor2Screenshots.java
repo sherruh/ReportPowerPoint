@@ -20,6 +20,7 @@ public class CalcRectangleFor2Screenshots {
             curWidth-=1;
             curHeight=curHeight-1/rate;
         }
+        //TODO calc x and y for rectangle
         System.out.println("Final: "+curWidth + " "+ curHeight);
         return new Rectangle(0,120,(int)curWidth,(int)curHeight);
     }
