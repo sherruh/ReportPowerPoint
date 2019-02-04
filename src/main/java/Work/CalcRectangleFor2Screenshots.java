@@ -15,12 +15,13 @@ public class CalcRectangleFor2Screenshots {
         curWidth=pictureRectangle.getWidth();
         curHeight=pictureRectangle.getHeight();
         double rate=curWidth/curHeight;
+        System.out.println("Initial: "+curWidth+" "+curHeight);
         while(!checkSize(curWidth,curHeight)){
-            curWidth-=10;
-            curHeight=curHeight-10/rate;
+            curWidth-=1;
+            curHeight=curHeight-1/rate;
         }
-
-        return new Rectangle();
+        System.out.println("Final: "+curWidth + " "+ curHeight);
+        return new Rectangle(0,120,(int)curWidth,(int)curHeight);
     }
 
     private boolean checkSize(double curWidth, double curHeight) {

@@ -41,7 +41,8 @@ public class CreateSlide {
                 int idx = ppt.addPicture(picture, XSLFPictureData.PICTURE_TYPE_JPEG);
                 XSLFPictureShape pic = slide.createPicture(idx);
                 //pic.setAnchor(new Rectangle((365*(i-1)),120,355,350));
-                calcRectangleFor2Screenshots.getRightRectangle(pic.getAnchor());
+                Rectangle rightRectangle= calcRectangleFor2Screenshots.getRightRectangle(pic.getAnchor());
+                pic.setAnchor(rightRectangle);
             }
         } catch (IOException e) {
             e.printStackTrace();
