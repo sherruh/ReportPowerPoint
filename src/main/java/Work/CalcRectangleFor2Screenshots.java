@@ -9,9 +9,11 @@ public class CalcRectangleFor2Screenshots {
     private double curHeight;
     final private double rightWidth=355;
     final private double rightHeight=350;
+    final private double centerOfSlide=360;
 
 
-    public Rectangle getRightRectangle(Rectangle2D pictureRectangle){
+    public Rectangle getRightRectangle(Rectangle2D pictureRectangle,int numberOfPicture){
+        numberOfPicture-=1;
         curWidth=pictureRectangle.getWidth();
         curHeight=pictureRectangle.getHeight();
         double rate=curWidth/curHeight;
@@ -20,6 +22,8 @@ public class CalcRectangleFor2Screenshots {
             curWidth-=1;
             curHeight=curHeight-1/rate;
         }
+        //double xPosition=
+
         //TODO calc x and y for rectangle
         System.out.println("Final: "+curWidth + " "+ curHeight);
         return new Rectangle(0,120,(int)curWidth,(int)curHeight);
