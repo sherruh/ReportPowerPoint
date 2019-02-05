@@ -7,7 +7,6 @@ import org.apache.poi.xslf.usermodel.XSLFPictureShape;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
 
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.io.*;
 
 public class CreateSlide {
@@ -40,7 +39,6 @@ public class CreateSlide {
                 picture = IOUtils.toByteArray(new FileInputStream(image));
                 int idx = ppt.addPicture(picture, XSLFPictureData.PICTURE_TYPE_JPEG);
                 XSLFPictureShape pic = slide.createPicture(idx);
-                //pic.setAnchor(new Rectangle((365*(i-1)),120,355,350));
                 Rectangle rightRectangle= calcRectangleFor2Screenshots.getRightRectangle(pic.getAnchor(),i);
                 pic.setAnchor(rightRectangle);
             }
