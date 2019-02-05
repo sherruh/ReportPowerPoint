@@ -9,12 +9,13 @@ import org.apache.poi.xslf.usermodel.XSLFSlide;
 import java.awt.*;
 import java.io.*;
 
-public class CreateSlide {
-    private File file;
-    private FileInputStream inputStream;
-    private XMLSlideShow ppt;
-    private CalcRectangleFor2Screenshots calcRectangleFor2Screenshots;
-    public CreateSlide(File file){
+public class CreateSlideFor2Operators {
+    protected File file;
+    protected FileInputStream inputStream;
+    protected XMLSlideShow ppt;
+    protected CalcRectangleFor2Pictures calcRectangleFor2Pictures =new CalcRectangleFor2Pictures();;
+
+    public CreateSlideFor2Operators(File file){
         this.file=file;
         try {
             inputStream = new FileInputStream(this.file);
@@ -22,7 +23,6 @@ public class CreateSlide {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        calcRectangleFor2Screenshots=new CalcRectangleFor2Screenshots();
     }
 
     public void addEmptySlide(){
@@ -30,16 +30,16 @@ public class CreateSlide {
         System.out.println("Added empty slides successfully!");
     }
 
-    public void add2ScreenshotsSlide() {
+    public void addPictresSlide(int startNumberOfPicture, int stopNumberOfPicture) {
         try {
             XSLFSlide slide = ppt.createSlide();
-            for (int i = 1; i < 3; i++) {
+            for (int i = startNumberOfPicture; i <= stopNumberOfPicture; i++) {
                 File image = new File(i + ".jpg");
-                byte[] picture = new byte[0];
+                byte[] picture ;
                 picture = IOUtils.toByteArray(new FileInputStream(image));
                 int idx = ppt.addPicture(picture, XSLFPictureData.PICTURE_TYPE_JPEG);
                 XSLFPictureShape pic = slide.createPicture(idx);
-                Rectangle rightRectangle= calcRectangleFor2Screenshots.getRightRectangle(pic.getAnchor(),i);
+                Rectangle rightRectangle= calcRectangleFor2Pictures.getRightRectangle(pic.getAnchor(),i);
                 pic.setAnchor(rightRectangle);
             }
         } catch (IOException e) {
@@ -48,8 +48,8 @@ public class CreateSlide {
         writeToFile("Added slide with 2 screenshots successfully!");
     }
 
-    public void writeToFile(String message){
-        FileOutputStream out = null;
+    void writeToFile(String message){
+        FileOutputStream out;
         try {
             out = new FileOutputStream(file);
             ppt.write(out);
