@@ -13,7 +13,8 @@ public class CreateSlideFor2Operators {
     protected File file;
     protected FileInputStream inputStream;
     protected XMLSlideShow ppt;
-    protected CalcRectangleFor2Pictures calcRectangleFor2Pictures =new CalcRectangleFor2Pictures();;
+    protected CalcRectangleFor2Pictures calcRectangleFor2Pictures =new CalcRectangleFor2Pictures();
+
 
     public CreateSlideFor2Operators(File file){
         this.file=file;
@@ -27,6 +28,7 @@ public class CreateSlideFor2Operators {
 
     public void addEmptySlide(){
         ppt.createSlide();
+        ppt.setPageSize(new java.awt.Dimension(2048,1536));
         System.out.println("Added empty slides successfully!");
     }
 
